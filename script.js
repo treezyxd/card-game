@@ -6,7 +6,7 @@ const birds = [
   'fiestaparrot',
   'metalparrot',
   'revertitparrot',
-  'triplestsparrot',
+  'tripletsparrot',
   'unicornparrot',
 ];
 
@@ -40,7 +40,9 @@ function createCard(bird) {
   return card;
 }
 
-function createGame() {
+function createGame(plays) {
+  birds.splice(plays / 2);
+
   const duplicatedBirds = [...birds, ...birds];
 
   const shuffledArray = duplicatedBirds.sort(() => Math.random() - 0.5);
@@ -55,15 +57,15 @@ function createGame() {
 
 }
 
-function loadGame() {
-  let plays = prompt('Quantas cartas quer jogar? Digite um numero par entre 4 e 14!');
+let plays;
 
-  if(plays < 4 || plays >= 15 || plays % 2 == 0 || play === undefined || plays === null) {
-    alert('erro');
-    plays = prompt('Quantas cartas quer jogar? Digite um numero par entre 4 e 14!');
-  } else {
-    createGame();
+function startGame() {
+  do{
+    plays = parseInt(prompt('quantas cartas jogar'));
+  } while (plays % 2 != 0 || plays > 14 || plays < 4 || plays == null || plays == undefined) {
+    createGame(plays);
   }
+
 }
 
-loadGame();
+startGame();

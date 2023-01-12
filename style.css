@@ -43,6 +43,9 @@ body {
   position: absolute;
   border: 1px solid #99ceab;
   background-color: #99CEA8;
+  display: flex;
+  justify-content: center;
+  align-items: center;
 }
 
 .front-face {
@@ -51,9 +54,7 @@ body {
 
 .back-face {
   backface-visibility: hidden;
-  display: flex;
-  justify-content: center;
-  align-items: center;
+  
 }
 
 .face img {
