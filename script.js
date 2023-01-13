@@ -22,6 +22,47 @@ function createImgElement(tag, attribute, path) {
   return element;
 }
 
+let firstCard = '';
+let secondCard = '';
+
+function checkEndGame() {
+  
+}
+
+function checkCards() {
+  const firstCharacter = firstCard.getAttribute('data-character');
+  const secondCharacter = secondCard.getAttribute('data-character');
+
+  if(firstCharacter !== secondCharacter) {
+    setTimeout(() => {
+      firstCard.classList.remove('reveal-card');
+      secondCard.classList.remove('reveal-card');
+      
+      firstCard = '';
+      secondCard = '';
+    }, 1000);
+  }
+}
+
+let count = 0;
+
+function revealCard({ target }) {
+  if(target.parentNode.parentNode.className.includes('reveal-card')){
+    return;
+  }
+
+  if(firstCard === ''){
+    target.parentNode.parentNode.classList.add('reveal-card');
+    firstCard = target.parentNode.parentNode;
+  } else if(secondCard === '') {
+    target.parentNode.parentNode.classList.add('reveal-card');
+    secondCard = target.parentNode.parentNode;
+
+    checkCards();
+  }
+
+}
+
 function createCard(bird) {
   const card = createElement('div', 'card');
   const front = createElement('div', 'face front-face');
@@ -37,6 +78,9 @@ function createCard(bird) {
   card.appendChild(front);
   card.appendChild(back);
 
+  card.addEventListener('click', revealCard);
+  card.setAttribute('data-character', bird);
+
   return card;
 }
 
@@ -49,7 +93,6 @@ function createGame(plays) {
 
   shuffledArray.forEach((bird) => {
 
-    console.log(bird);
     const card = createCard(bird);
     container.appendChild(card);
 

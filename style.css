@@ -16,12 +16,14 @@ body {
   font-size: 56px;
   color: #75b79e;
   margin: 40px auto;
-  max-width: 700px;
+  max-width: 600px;
 }
 
 .container {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
   gap: 45px;
   width: 100%;
   max-width: 1200px;
@@ -54,15 +56,14 @@ body {
 
 .back-face {
   backface-visibility: hidden;
-  
 }
 
 .face img {
-  height: 100px;
+  height: 120px;
   width: 100px;
   margin: auto;
 }
 
-.card:hover {
+.reveal-card {
   transform: rotateY(180deg);
 }
