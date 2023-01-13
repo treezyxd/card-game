@@ -26,14 +26,24 @@ let firstCard = '';
 let secondCard = '';
 
 function checkEndGame() {
-  
+  const flippedCards = document.querySelectorAll('.reveal-card');
+  const allCards = document.querySelectorAll('.card');
+
+  if(flippedCards.length === allCards.length) {
+    alert('you won');
+  }
 }
 
 function checkCards() {
   const firstCharacter = firstCard.getAttribute('data-character');
   const secondCharacter = secondCard.getAttribute('data-character');
 
-  if(firstCharacter !== secondCharacter) {
+  if(firstCharacter === secondCharacter) {
+    firstCard = '';
+    secondCard = '';
+    
+    checkEndGame();
+  } else {
     setTimeout(() => {
       firstCard.classList.remove('reveal-card');
       secondCard.classList.remove('reveal-card');
