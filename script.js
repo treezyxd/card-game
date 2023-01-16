@@ -30,7 +30,7 @@ function checkEndGame() {
   const allCards = document.querySelectorAll('.card');
 
   if(flippedCards.length === allCards.length) {
-    alert('you won');
+    alert(`Você ganhou em ${count} jogadas`);
   }
 }
 
@@ -42,7 +42,9 @@ function checkCards() {
     firstCard = '';
     secondCard = '';
     
-    checkEndGame();
+    setTimeout(() => {
+      checkEndGame();
+    }, 250);
   } else {
     setTimeout(() => {
       firstCard.classList.remove('reveal-card');
@@ -64,9 +66,11 @@ function revealCard({ target }) {
   if(firstCard === ''){
     target.parentNode.parentNode.classList.add('reveal-card');
     firstCard = target.parentNode.parentNode;
+    count++;
   } else if(secondCard === '') {
     target.parentNode.parentNode.classList.add('reveal-card');
     secondCard = target.parentNode.parentNode;
+    count++;
 
     checkCards();
   }

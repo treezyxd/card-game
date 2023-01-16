@@ -67,3 +67,14 @@ body {
 .reveal-card {
   transform: rotateY(180deg);
 }
+
+@media (max-width: 335px) {
+  .title {
+    display: flex;
+    text-align: center;
+  }
+  .container {
+    display: flex;
+    flex-direction: column;
+  }
+}
